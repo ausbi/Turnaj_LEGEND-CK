@@ -1,1 +1,1 @@
-# Turnaj_LEGEND--K
+# Turnaj_LEGEND-CK
