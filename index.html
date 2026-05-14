@@ -1,149 +1,297 @@
 <!DOCTYPE html>
-<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Letní Pětiboj Legend 2026</title>
+    <title>Pětiboj Legend 2026</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #e9ecef; padding: 10px; color: #333; }
-        .container { max-width: 1000px; margin: auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
-        h1 { text-align: center; color: #2c3e50; text-transform: uppercase; border-bottom: 3px solid #e67e22; padding-bottom: 10px; }
-        h3 { color: #2c3e50; margin-top: 30px; border-left: 5px solid #e67e22; padding-left: 10px; }
-        .table-wrapper { overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; background: white; }
-        th, td { border: 1px solid #dee2e6; padding: 10px; text-align: center; }
-        th { background-color: #343a40; color: white; }
-        tr:first-child td { background-color: #fff9db !important; } 
-        .match-card { background: #f8f9fa; border: 1px solid #dee2e6; padding: 15px; margin-bottom: 15px; border-radius: 8px; }
-        .match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: center; }
-        input[type="number"] { width: 55px; padding: 5px; border-radius: 5px; border: 1px solid #ccc; font-weight: bold; text-align: center; }
-        input[type="text"] { padding: 8px; border-radius: 5px; border: 1px solid #ccc; width: 130px; margin: 2px; }
-        button { padding: 10px 15px; background: #e67e22; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
-        .save-btn { background: #27ae60; width: 100%; margin-top: 20px; font-size: 1.1em; }
-        .reset-btn { background: #c0392b; font-size: 0.8em; margin-top: 30px; opacity: 0.5; }
-        .max-hint { font-size: 0.7em; color: #7f8c8d; }
-        .team-label { font-weight: bold; color: #d35400; display: block; margin-bottom: 8px; }
-        
-        /* Export Panel */
-        #export-panel { background: #2c3e50; color: white; padding: 15px; border-radius: 10px; margin-top: 40px; }
-        #outputCode { width: 100%; height: 80px; font-size: 10px; margin-top: 10px; display: none; }
+        :root { --primary: #ff6b00; --dark: #1a1a1a; --bg: #f0f2f5; --white: #ffffff; }
+        body { font-family: 'Segoe UI', Roboto, sans-serif; background: var(--bg); margin: 0; padding: 10px; color: var(--dark); }
+        .container { max-width: 850px; margin: auto; background: var(--white); padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        h1 { text-align: center; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; font-size: 1.8em; }
+        .subtitle { text-align: center; color: #666; margin-bottom: 25px; font-weight: bold; font-size: 1.2em; }
+        .top-actions { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-bottom: 30px; }
+        .btn-prihlaska { width: 100%; max-width: 300px; padding: 15px; background: var(--dark); color: white; text-align: center; text-decoration: none; font-weight: 800; border-radius: 12px; transition: 0.3s; text-transform: uppercase; }
+        .btn-prihlaska:hover { background: var(--primary); transform: translateY(-2px); }
+        .link-propozice { color: #666; font-size: 0.9em; text-decoration: none; border-bottom: 1px dashed #666; }
+        .table-wrapper { overflow-x: auto; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        table { width: 100%; border-collapse: collapse; background: white; }
+        th { background: var(--dark); color: white; padding: 15px 10px; font-size: 0.85em; text-transform: uppercase; }
+        td { padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee; font-weight: 600; }
+        .sum-col { background: #fdf2e9; color: var(--primary); font-weight: 800; }
+        tr:first-child td { background-color: #fff4e6 !important; }
+        .match-card { background: #fff; border: 2px solid #f0f0f0; padding: 20px; margin-bottom: 20px; border-radius: 15px; }
+        .match-header { font-weight: 900; border-bottom: 2px solid var(--primary); padding-bottom: 8px; margin-bottom: 15px; display: flex; justify-content: space-between; font-size: 1.1em; }
+        .match-grid { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; }
+        .discipline { font-size: 0.95em; display: flex; align-items: center; color: #444; }
+        .discipline span { margin-right: 10px; font-size: 1.2em; }
+        input[type="number"] { width: 50px; height: 35px; border: 2px solid #ddd; border-radius: 8px; text-align: center; font-weight: bold; }
+        .beer-section { background: #fff9e6; padding: 15px; border-radius: 12px; border: 1px solid #ffeeba; margin-top: 20px; }
+        .admin-zone { margin-top: 60px; padding: 30px; background: #f8f9fa; border: 2px dashed #ccc; border-radius: 20px; }
+        .admin-zone input[type="text"] { padding: 10px; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 10px; width: 130px; }
+        .save-btn { background: var(--primary); color: white; width: 100%; padding: 20px; border: none; border-radius: 12px; font-size: 1.2em; font-weight: bold; cursor: pointer; margin-top: 20px; }
+        .btn-sync { background: #3498db; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; margin-top: 10px; font-weight: bold; }
+        textarea { width: 100%; height: 60px; margin-top: 10px; display: none; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>🏆 Letní Pětiboj Legend 2026</h1>
-    
-    <div id="setup-area">
-        <h3>1. Nastavení týmů</h3>
-        <input type="text" id="t1" placeholder="Tým 1">
-        <input type="text" id="t2" placeholder="Tým 2">
-        <input type="text" id="t3" placeholder="Tým 3">
-        <input type="text" id="t4" placeholder="Tým 4">
-        <input type="text" id="t5" placeholder="Tým 5">
-        <button onclick="generovatNove()">Vytvořit turnaj</button>
+    <h1>🏆 Pětiboj Legend 2026</h1>
+    <div class="subtitle">1. 6. – 31. 8. | 🏓 🎱 ⚽ 🎯 🍺</div>
+
+    <div class="top-actions">
+        <a href="https://tally.so/r/9qRNoE" target="_blank" class="btn-prihlaska">📝 REGISTROVAT TÝM</a>
+        <a href="Propozice.pdf" target="_blank" class="link-propozice">📄 Otevřít kompletní propozice (PDF)</a>
     </div>
 
-    <h3>📊 Průběžná tabulka</h3>
+    <h3>🏆 AKTUÁLNÍ POŘADÍ</h3>
     <div class="table-wrapper">
-        <table id="mainTable">
+        <table>
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Tým</th>
+                    <th style="text-align:left">Tým</th>
                     <th>🏓</th>
                     <th>🎱</th>
                     <th>⚽</th>
                     <th>🎯</th>
                     <th>🍺</th>
-                    <th>SUM</th>
+                    <th style="background: var(--primary)">SUM</th>
                 </tr>
             </thead>
-            <tbody id="resultsBody"></tbody>
+            <tbody id="resultsBody"><tr><td>1</td><td style="text-align:left">Tým 1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="sum-col">0</td></tr><tr><td>2</td><td style="text-align:left">Tým 2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="sum-col">0</td></tr><tr><td>3</td><td style="text-align:left">Tým 3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="sum-col">0</td></tr><tr><td>4</td><td style="text-align:left">Tým 4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="sum-col">0</td></tr><tr><td>5</td><td style="text-align:left">Tým 5</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="sum-col">0</td></tr></tbody>
         </table>
     </div>
 
-    <h3>🏟️ Zápisy z duelů</h3>
-    <div id="matches"></div>
+    <h3>🏟️ ZÁPISY Z DUELŮ</h3>
+    <div id="matches">
+                <div class="match-card">
+                    <div class="match-header"><span>Tým 1</span> <span style="color:var(--primary)">VS</span> <span>Tým 2</span></div>
+                    <div class="match-grid">
+                        <div class="discipline"><span>🏓</span> Ping-Pong</div>
+                        <div><input type="number" step="0.5" class="score" data-id="m_0_1_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_0_1_pp_2" value="0"></div>
+                        <div class="discipline"><span>🎱</span> Kulečník</div>
+                        <div><input type="number" step="0.5" class="score" data-id="m_0_1_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_0_1_kul_2" value="0"></div>
+                        <div class="discipline"><span>⚽</span> Fotbálek</div>
+                        <div><input type="number" step="1" class="score" data-id="m_0_1_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_0_1_fot_2" value="0"></div>
+                        <div class="discipline"><span>🎯</span> Šipky</div>
+                        <div><input type="number" step="1" class="score" data-id="m_0_1_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_0_1_sip_2" value="0"></div>
+                    </div>
+                </div>
+                <div class="match-card">
+                    <div class="match-header"><span>Tým 1</span> <span style="color:var(--primary)">VS</span> <span>Tým 3</span></div>
+                    <div class="match-grid">
+                        <div class="discipline"><span>🏓</span> Ping-Pong</div>
+                        <div><input type="number" step="0.5" class="score" data-id="m_0_2_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_0_2_pp_2" value="0"></div>
+                        <div class="discipline"><span>🎱</span> Kulečník</div>
+                        <div><input type="number" step="0.5" class="score" data-id="m_0_2_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_0_2_kul_2" value="0"></div>
+                        <div class="discipline"><span>⚽</span> Fotbálek</div>
+                        <div><input type="number" step="1" class="score" data-id="m_0_2_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_0_2_fot_2" value="0"></div>
+                        <div class="discipline"><span>🎯</span> Šipky</div>
+                        <div><input type="number" step="1" class="score" data-id="m_0_2_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_0_2_sip_2" value="0"></div>
+                    </div>
+                </div>
+                <div class="match-card">
+                    <div class="match-header"><span>Tým 1</span> <span style="color:var(--primary)">VS</span> <span>Tým 4</span></div>
+                    <div class="match-grid">
+                        <div class="discipline"><span>🏓</span> Ping-Pong</div>
+                        <div><input type="number" step="0.5" class="score" data-id="m_0_3_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_0_3_pp_2" value="0"></div>
+                        <div class="discipline"><span>🎱</span> Kulečník</div>
+                        <div><input type="number" step="0.5" class="score" data-id="m_0_3_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_0_3_kul_2" value="0"></div>
+                        <div class="discipline"><span>⚽</span> Fotbálek</div>
+                        <div><input type="number" step="1" class="score" data-id="m_0_3_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_0_3_fot_2" value="0"></div>
+                        <div class="discipline"><span>🎯</span> Šipky</div>
+                        <div><input type="number" step="1" class="score" data-id="m_0_3_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_0_3_sip_2" value="0"></div>
+                    </div>
+                </div>
+                <div class="match-card">
+                    <div class="match-header"><span>Tým 1</span> <span style="color:var(--primary)">VS</span> <span>Tým 5</span></div>
+                    <div class="match-grid">
+                        <div class="discipline"><span>🏓</span> Ping-Pong</div>
+                        <div><input type="number" step="0.5" class="score" data-id="m_0_4_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_0_4_pp_2" value="0"></div>
+                        <div class="discipline"><span>🎱</span> Kulečník</div>
+                        <div><input type="number" step="0.5" class="score" data-id="m_0_4_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_0_4_kul_2" value="0"></div>
+                        <div class="discipline"><span>⚽</span> Fotbálek</div>
+                        <div><input type="number" step="1" class="score" data-id="m_0_4_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_0_4_fot_2" value="0"></div>
+                        <div class="discipline"><span>🎯</span> Šipky</div>
+                        <div><input type="number" step="1" class="score" data-id="m_0_4_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_0_4_sip_2" value="0"></div>
+                    </div>
+                </div>
+                <div class="match-card">
+                    <div class="match-header"><span>Tým 2</span> <span style="color:var(--primary)">VS</span> <span>Tým 3</span></div>
+                    <div class="match-grid">
+                        <div class="discipline"><span>🏓</span> Ping-Pong</div>
+                        <div><input type="number" step="0.5" class="score" data-id="m_1_2_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_1_2_pp_2" value="0"></div>
+                        <div class="discipline"><span>🎱</span> Kulečník</div>
+                        <div><input type="number" step="0.5" class="score" data-id="m_1_2_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_1_2_kul_2" value="0"></div>
+                        <div class="discipline"><span>⚽</span> Fotbálek</div>
+                        <div><input type="number" step="1" class="score" data-id="m_1_2_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_1_2_fot_2" value="0"></div>
+                        <div class="discipline"><span>🎯</span> Šipky</div>
+                        <div><input type="number" step="1" class="score" data-id="m_1_2_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_1_2_sip_2" value="0"></div>
+                    </div>
+                </div>
+                <div class="match-card">
+                    <div class="match-header"><span>Tým 2</span> <span style="color:var(--primary)">VS</span> <span>Tým 4</span></div>
+                    <div class="match-grid">
+                        <div class="discipline"><span>🏓</span> Ping-Pong</div>
+                        <div><input type="number" step="0.5" class="score" data-id="m_1_3_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_1_3_pp_2" value="0"></div>
+                        <div class="discipline"><span>🎱</span> Kulečník</div>
+                        <div><input type="number" step="0.5" class="score" data-id="m_1_3_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_1_3_kul_2" value="0"></div>
+                        <div class="discipline"><span>⚽</span> Fotbálek</div>
+                        <div><input type="number" step="1" class="score" data-id="m_1_3_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_1_3_fot_2" value="0"></div>
+                        <div class="discipline"><span>🎯</span> Šipky</div>
+                        <div><input type="number" step="1" class="score" data-id="m_1_3_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_1_3_sip_2" value="0"></div>
+                    </div>
+                </div>
+                <div class="match-card">
+                    <div class="match-header"><span>Tým 2</span> <span style="color:var(--primary)">VS</span> <span>Tým 5</span></div>
+                    <div class="match-grid">
+                        <div class="discipline"><span>🏓</span> Ping-Pong</div>
+                        <div><input type="number" step="0.5" class="score" data-id="m_1_4_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_1_4_pp_2" value="0"></div>
+                        <div class="discipline"><span>🎱</span> Kulečník</div>
+                        <div><input type="number" step="0.5" class="score" data-id="m_1_4_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_1_4_kul_2" value="0"></div>
+                        <div class="discipline"><span>⚽</span> Fotbálek</div>
+                        <div><input type="number" step="1" class="score" data-id="m_1_4_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_1_4_fot_2" value="0"></div>
+                        <div class="discipline"><span>🎯</span> Šipky</div>
+                        <div><input type="number" step="1" class="score" data-id="m_1_4_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_1_4_sip_2" value="0"></div>
+                    </div>
+                </div>
+                <div class="match-card">
+                    <div class="match-header"><span>Tým 3</span> <span style="color:var(--primary)">VS</span> <span>Tým 4</span></div>
+                    <div class="match-grid">
+                        <div class="discipline"><span>🏓</span> Ping-Pong</div>
+                        <div><input type="number" step="0.5" class="score" data-id="m_2_3_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_2_3_pp_2" value="0"></div>
+                        <div class="discipline"><span>🎱</span> Kulečník</div>
+                        <div><input type="number" step="0.5" class="score" data-id="m_2_3_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_2_3_kul_2" value="0"></div>
+                        <div class="discipline"><span>⚽</span> Fotbálek</div>
+                        <div><input type="number" step="1" class="score" data-id="m_2_3_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_2_3_fot_2" value="0"></div>
+                        <div class="discipline"><span>🎯</span> Šipky</div>
+                        <div><input type="number" step="1" class="score" data-id="m_2_3_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_2_3_sip_2" value="0"></div>
+                    </div>
+                </div>
+                <div class="match-card">
+                    <div class="match-header"><span>Tým 3</span> <span style="color:var(--primary)">VS</span> <span>Tým 5</span></div>
+                    <div class="match-grid">
+                        <div class="discipline"><span>🏓</span> Ping-Pong</div>
+                        <div><input type="number" step="0.5" class="score" data-id="m_2_4_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_2_4_pp_2" value="0"></div>
+                        <div class="discipline"><span>🎱</span> Kulečník</div>
+                        <div><input type="number" step="0.5" class="score" data-id="m_2_4_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_2_4_kul_2" value="0"></div>
+                        <div class="discipline"><span>⚽</span> Fotbálek</div>
+                        <div><input type="number" step="1" class="score" data-id="m_2_4_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_2_4_fot_2" value="0"></div>
+                        <div class="discipline"><span>🎯</span> Šipky</div>
+                        <div><input type="number" step="1" class="score" data-id="m_2_4_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_2_4_sip_2" value="0"></div>
+                    </div>
+                </div>
+                <div class="match-card">
+                    <div class="match-header"><span>Tým 4</span> <span style="color:var(--primary)">VS</span> <span>Tým 5</span></div>
+                    <div class="match-grid">
+                        <div class="discipline"><span>🏓</span> Ping-Pong</div>
+                        <div><input type="number" step="0.5" class="score" data-id="m_3_4_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_3_4_pp_2" value="0"></div>
+                        <div class="discipline"><span>🎱</span> Kulečník</div>
+                        <div><input type="number" step="0.5" class="score" data-id="m_3_4_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_3_4_kul_2" value="0"></div>
+                        <div class="discipline"><span>⚽</span> Fotbálek</div>
+                        <div><input type="number" step="1" class="score" data-id="m_3_4_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_3_4_fot_2" value="0"></div>
+                        <div class="discipline"><span>🎯</span> Šipky</div>
+                        <div><input type="number" step="1" class="score" data-id="m_3_4_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_3_4_sip_2" value="0"></div>
+                    </div>
+                </div><div class="beer-section"><h3>🍺 Tuplák piva (U Marie)</h3><div style="display:flex; justify-content:space-between; margin-bottom:8px; align-items:center;"><strong>Tým 1</strong> <input type="number" class="score" data-id="pivo_0" value="0"></div><div style="display:flex; justify-content:space-between; margin-bottom:8px; align-items:center;"><strong>Tým 2</strong> <input type="number" class="score" data-id="pivo_1" value="0"></div><div style="display:flex; justify-content:space-between; margin-bottom:8px; align-items:center;"><strong>Tým 3</strong> <input type="number" class="score" data-id="pivo_2" value="0"></div><div style="display:flex; justify-content:space-between; margin-bottom:8px; align-items:center;"><strong>Tým 4</strong> <input type="number" class="score" data-id="pivo_3" value="0"></div><div style="display:flex; justify-content:space-between; margin-bottom:8px; align-items:center;"><strong>Tým 5</strong> <input type="number" class="score" data-id="pivo_4" value="0"></div></div></div>
 
-    <button class="save-btn" onclick="ulozitData()">💾 ULOŽIT A PŘEPOČÍTAT</button>
+    <button class="save-btn" onclick="ulozitData()">💾 ULOŽIT VÝSLEDKY</button>
 
-    <!-- SEKCE PRO GITHUB -->
-    <div id="export-panel">
-        <h3>🚀 GitHub Synchronizace (pro admina)</h3>
-        <p style="font-size: 0.8em;">Po kliknutí na uložit vygeneruj kód a vlož ho do svého index.html na GitHubu.</p>
-        <button onclick="generovatKodProGithub()" style="background:#3498db">1. Generovat kód pro GitHub</button>
-        <button onclick="kopirovatKod()" style="background:#9b59b6">2. Kopírovat kód</button>
-        <textarea id="outputCode" readonly></textarea>
+    <div class="admin-zone">
+        <h3>🛠️ ADMINISTRACE (Admin panel)</h3>
+        <p>1. Změň jména týmů a klikni na oranžové tlačítko:</p>
+        <div id="setup-inputs">
+            <input type="text" id="t1" value="Tým 1">
+            <input type="text" id="t2" value="Tým 2">
+            <input type="text" id="t3" value="Tým 3">
+            <input type="text" id="t4" value="Tým 4">
+            <input type="text" id="t5" value="Tým 5">
+        </div>
+        <button onclick="generovatNove()" style="padding:12px 20px; background: #e67e22; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer; margin-top:10px;">Vytvořit / Aktualizovat zápasy</button>
+
+        <div style="margin-top:20px; padding-top:20px; border-top:1px solid #ddd">
+            <p>2. Uložení na GitHub (aby to viděli ostatní):</p>
+            <button class="btn-sync" onclick="generovatKodProGithub()">1. Generovat kód</button>
+            <button class="btn-sync" onclick="kopirovatKod()" style="background:#9b59b6">2. Kopírovat kód</button>
+            <textarea id="outputCode" readonly=""></textarea>
+        </div>
     </div>
-    
-    <center>
-        <button class="reset-btn" onclick="resetovatVse()">⚠️ Resetovat celý turnaj</button>
-    </center>
 </div>
 
 <script>
-    let tymy = ["Tým 1", "Tým 2", "Tým 3", "Tým 4", "Tým 5"];
-    
+    // Spuštění při načtení
     window.onload = function() {
-        // Načtení jmen týmů z políček (pokud tam jsou)
-        for(let i=1; i<=5; i++) {
-            let val = document.getElementById('t'+i).value;
-            if(val) tymy[i-1] = val;
-        }
-        prepojitejTabulku();
+        vykreslitVse();
     };
 
-    function generovatNove() {
+    function vykreslitVse() {
+        let tymy = [];
         for(let i=1; i<=5; i++) {
-            tymy[i-1] = document.getElementById('t'+i).value || "Tým " + i;
+            let el = document.getElementById('t'+i);
+            // Priorita je hodnota v 'value' atributu (to co je v HTML), pak v poli inputu
+            let jmeno = el.getAttribute('value') || el.value;
+            tymy.push(jmeno);
+            el.value = jmeno; // Synchronizace políčka
         }
-        vykreslitZapasnik();
-    }
 
-    function vykreslitZapasnik() {
+        // 1. Vykreslení zápasů
         let html = "";
         for(let i=0; i<tymy.length; i++) {
             for(let j=i+1; j<tymy.length; j++) {
                 let idBase = `m_${i}_${j}`;
                 html += `
                 <div class="match-card">
-                    <span class="team-label">${tymy[i]} vs ${tymy[j]}</span>
+                    <div class="match-header"><span>${tymy[i]}</span> <span style="color:var(--primary)">VS</span> <span>${tymy[j]}</span></div>
                     <div class="match-grid">
-                        <span>🏓 Ping-Pong <span class="max-hint">(max 10)</span></span>
-                        <div>
-                            <input type="number" step="0.5" class="score" data-id="${idBase}_pp_1" value="0"> : 
-                            <input type="number" step="0.5" class="score" data-id="${idBase}_pp_2" value="0">
-                        </div>
-                        <span>🎱 Kulečník <span class="max-hint">(max 10)</span></span>
-                        <div>
-                            <input type="number" step="0.5" class="score" data-id="${idBase}_kul_1" value="0"> : 
-                            <input type="number" step="0.5" class="score" data-id="${idBase}_kul_2" value="0">
-                        </div>
-                        <span>⚽ Fotbálek <span class="max-hint">(max 10)</span></span>
-                        <div>
-                            <input type="number" step="1" class="score" data-id="${idBase}_fot_1" value="0"> : 
-                            <input type="number" step="1" class="score" data-id="${idBase}_fot_2" value="0">
-                        </div>
-                        <span>🎯 Šipky <span class="max-hint">(max 10)</span></span>
-                        <div>
-                            <input type="number" step="1" class="score" data-id="${idBase}_sip_1" value="0"> : 
-                            <input type="number" step="1" class="score" data-id="${idBase}_sip_2" value="0">
-                        </div>
+                        <div class="discipline"><span>🏓</span> Ping-Pong</div>
+                        <div><input type="number" step="0.5" class="score" data-id="${idBase}_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="${idBase}_pp_2" value="0"></div>
+                        <div class="discipline"><span>🎱</span> Kulečník</div>
+                        <div><input type="number" step="0.5" class="score" data-id="${idBase}_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="${idBase}_kul_2" value="0"></div>
+                        <div class="discipline"><span>⚽</span> Fotbálek</div>
+                        <div><input type="number" step="1" class="score" data-id="${idBase}_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="${idBase}_fot_2" value="0"></div>
+                        <div class="discipline"><span>🎯</span> Šipky</div>
+                        <div><input type="number" step="1" class="score" data-id="${idBase}_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="${idBase}_sip_2" value="0"></div>
                     </div>
                 </div>`;
             }
         }
-        html += "<h3>🍺 Pořadí v pivu (max 40 b.)</h3>";
+        
+        // 2. Vykreslení piva
+        html += `<div class="beer-section"><h3>🍺 Tuplák piva (U Marie)</h3>`;
         tymy.forEach((t, i) => {
-            html += `<div style="margin-bottom:10px">${t}: <input type="number" class="score" data-id="pivo_${i}" value="0"></div>`;
+            html += `<div style="display:flex; justify-content:space-between; margin-bottom:8px; align-items:center;"><strong>${t}</strong> <input type="number" class="score" data-id="pivo_${i}" value="0"></div>`;
         });
+        html += `</div>`;
         document.getElementById('matches').innerHTML = html;
-        prepojitejTabulku();
+
+        // Obnova hodnot z atributu value (při načtení z GitHubu)
+        document.querySelectorAll('.score').forEach(input => {
+            let v = input.getAttribute('value');
+            if(v) input.value = v;
+        });
+
+        prepojitejTabulku(tymy);
     }
 
-    function prepojitejTabulku() {
-        let stats = tymy.map(name => ({name, pp:0, kul:0, fot:0, sip:0, pivo:0, celkem:0}));
+    function generovatNove() {
+        // Natvrdo přepíšeme atributy 'value' podle toho, co jsi právě napsal do políček
+        for(let i=1; i<=5; i++) {
+            let el = document.getElementById('t'+i);
+            el.setAttribute('value', el.value);
+        }
+        vykreslitVse();
+        alert("Názvy týmů byly aktualizovány a zápasy vytvořeny.");
+    }
+
+    function prepojitejTabulku(tymySeznam) {
+        let tymyLocal = tymySeznam || [];
+        if(tymyLocal.length === 0) {
+            for(let i=1; i<=5; i++) tymyLocal.push(document.getElementById('t'+i).value);
+        }
+
+        let stats = tymyLocal.map(name => ({name, pp:0, kul:0, fot:0, sip:0, pivo:0, celkem:0}));
+        
         document.querySelectorAll('.score').forEach(input => {
             let val = parseFloat(input.value) || 0;
             let id = input.dataset.id;
@@ -156,46 +304,49 @@
                 stats[targetIdx][p[3]] += val;
             }
         });
+
         stats.forEach(s => s.celkem = s.pp + s.kul + s.fot + s.sip + s.pivo);
         stats.sort((a, b) => b.celkem - a.celkem);
 
         let bodyHtml = "";
         stats.forEach((s, i) => {
-            let m = (i===0 && s.celkem>0) ? "🥇 " : (i===1 && s.celkem>0) ? "🥈 " : (i===2 && s.celkem>0) ? "🥉 " : "";
-            bodyHtml += `<tr><td>${i+1}.</td><td style="font-weight:bold">${m}${s.name}</td><td>${s.pp}</td><td>${s.kul}</td><td>${s.fot}</td><td>${s.sip}</td><td>${s.pivo}</td><td style="font-weight:bold; background:#fff3e0">${s.celkem}</td></tr>`;
+            let m = (i===0 && s.celkem > 0) ? "🥇 " : (i===1 && s.celkem > 0) ? "🥈 " : (i===2 && s.celkem > 0) ? "🥉 " : "";
+            bodyHtml += `<tr><td>${i+1}</td><td style="text-align:left">${m}${s.name}</td><td>${s.pp}</td><td>${s.kul}</td><td>${s.fot}</td><td>${s.sip}</td><td>${s.pivo}</td><td class="sum-col">${s.celkem}</td></tr>`;
         });
         document.getElementById('resultsBody').innerHTML = bodyHtml;
     }
 
-    function ulozitData() {
-        prepojitejTabulku();
-        alert("Data přepočítána! Nyní vygeneruj kód pro GitHub.");
+    function ulozitData() { 
+        prepojitejTabulku(); 
+        alert("Výsledky přepočítány!"); 
     }
 
     function generovatKodProGithub() {
-        // Nastavíme hodnoty v atributech value, aby byly v HTML kódu vidět
-        document.querySelectorAll('input').forEach(i => i.setAttribute('value', i.value));
+        // Klíčový krok: uložíme všechny aktuální hodnoty (jména i skóre) do HTML před exportem
+        for(let i=1; i<=5; i++) {
+            let el = document.getElementById('t'+i);
+            el.setAttribute('value', el.value);
+        }
+        document.querySelectorAll('.score').forEach(input => {
+            input.setAttribute('value', input.value);
+        });
+
         const html = "<!DOCTYPE html>\n" + document.documentElement.innerHTML;
         const area = document.getElementById('outputCode');
         area.value = html;
         area.style.display = "block";
-        alert("Kód připraven v textovém poli.");
     }
 
     function kopirovatKod() {
-        const area = document.getElementById('outputCode');
-        area.select();
+        document.getElementById('outputCode').select();
         document.execCommand('copy');
-        alert("Zkopírováno! Teď to vlož na GitHub.");
+        alert("Kód zkopírován! Vlož ho na GitHub do index.html");
     }
 
-    function resetovatVse() {
-        if(confirm("Smazat vše?")) location.reload();
-    }
-
-    document.addEventListener('input', e => {
-        if (e.target.classList.contains('score')) prepojitejTabulku();
+    // Automatický přepočet při psaní výsledků
+    document.addEventListener('input', e => { 
+        if (e.target.classList.contains('score')) prepojitejTabulku(); 
     });
 </script>
+
 </body>
-</html>
