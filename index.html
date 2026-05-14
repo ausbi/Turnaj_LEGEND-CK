@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letní Pětiboj Legend 2026</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #e9ecef; padding: 10px; color: #333; }
+        .container { max-width: 1000px; margin: auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+        h1 { text-align: center; color: #2c3e50; text-transform: uppercase; border-bottom: 3px solid #e67e22; padding-bottom: 10px; }
+        h3 { color: #2c3e50; margin-top: 30px; border-left: 5px solid #e67e22; padding-left: 10px; }
+        .table-wrapper { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; background: white; }
+        th, td { border: 1px solid #dee2e6; padding: 10px; text-align: center; }
+        th { background-color: #343a40; color: white; }
+        tr:first-child td { background-color: #fff9db !important; } 
+        .match-card { background: #f8f9fa; border: 1px solid #dee2e6; padding: 15px; margin-bottom: 15px; border-radius: 8px; }
+        .match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: center; }
+        input[type="number"] { width: 55px; padding: 5px; border-radius: 5px; border: 1px solid #ccc; font-weight: bold; text-align: center; }
+        input[type="text"] { padding: 8px; border-radius: 5px; border: 1px solid #ccc; width: 130px; margin: 2px; }
+        button { padding: 10px 15px; background: #e67e22; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .save-btn { background: #27ae60; width: 100%; margin-top: 20px; font-size: 1.1em; }
+        .reset-btn { background: #c0392b; font-size: 0.8em; margin-top: 30px; opacity: 0.5; }
+        .max-hint { font-size: 0.7em; color: #7f8c8d; }
+        .team-label { font-weight: bold; color: #d35400; display: block; margin-bottom: 8px; }
+        
+        /* Export Panel */
+        #export-panel { background: #2c3e50; color: white; padding: 15px; border-radius: 10px; margin-top: 40px; }
+        #outputCode { width: 100%; height: 80px; font-size: 10px; margin-top: 10px; display: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🏆 Letní Pětiboj Legend 2026</h1>
+    
+    <div id="setup-area">
+        <h3>1. Nastavení týmů</h3>
+        <input type="text" id="t1" placeholder="Tým 1">
+        <input type="text" id="t2" placeholder="Tým 2">
+        <input type="text" id="t3" placeholder="Tým 3">
+        <input type="text" id="t4" placeholder="Tým 4">
+        <input type="text" id="t5" placeholder="Tým 5">
+        <button onclick="generovatNove()">Vytvořit turnaj</button>
+    </div>
+
+    <h3>📊 Průběžná tabulka</h3>
+    <div class="table-wrapper">
+        <table id="mainTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tým</th>
+                    <th>🏓</th>
+                    <th>🎱</th>
+                    <th>⚽</th>
+                    <th>🎯</th>
+                    <th>🍺</th>
+                    <th>SUM</th>
+                </tr>
+            </thead>
+            <tbody id="resultsBody"></tbody>
+        </table>
+    </div>
+
+    <h3>🏟️ Zápisy z duelů</h3>
+    <div id="matches"></div>
+
+    <button class="save-btn" onclick="ulozitData()">💾 ULOŽIT A PŘEPOČÍTAT</button>
+
+    <!-- SEKCE PRO GITHUB -->
+    <div id="export-panel">
+        <h3>🚀 GitHub Synchronizace (pro admina)</h3>
+        <p style="font-size: 0.8em;">Po kliknutí na uložit vygeneruj kód a vlož ho do svého index.html na GitHubu.</p>
+        <button onclick="generovatKodProGithub()" style="background:#3498db">1. Generovat kód pro GitHub</button>
+        <button onclick="kopirovatKod()" style="background:#9b59b6">2. Kopírovat kód</button>
+        <textarea id="outputCode" readonly></textarea>
+    </div>
+    
+    <center>
+        <button class="reset-btn" onclick="resetovatVse()">⚠️ Resetovat celý turnaj</button>
+    </center>
+</div>
+
+<script>
+    let tymy = ["Tým 1", "Tým 2", "Tým 3", "Tým 4", "Tým 5"];
+    
+    window.onload = function() {
+        // Načtení jmen týmů z políček (pokud tam jsou)
+        for(let i=1; i<=5; i++) {
+            let val = document.getElementById('t'+i).value;
+            if(val) tymy[i-1] = val;
+        }
+        prepojitejTabulku();
+    };
+
+    function generovatNove() {
+        for(let i=1; i<=5; i++) {
+            tymy[i-1] = document.getElementById('t'+i).value || "Tým " + i;
+        }
+        vykreslitZapasnik();
+    }
+
+    function vykreslitZapasnik() {
+        let html = "";
+        for(let i=0; i<tymy.length; i++) {
+            for(let j=i+1; j<tymy.length; j++) {
+                let idBase = `m_${i}_${j}`;
+                html += `
+                <div class="match-card">
+                    <span class="team-label">${tymy[i]} vs ${tymy[j]}</span>
+                    <div class="match-grid">
+                        <span>🏓 Ping-Pong <span class="max-hint">(max 10)</span></span>
+                        <div>
+                            <input type="number" step="0.5" class="score" data-id="${idBase}_pp_1" value="0"> : 
+                            <input type="number" step="0.5" class="score" data-id="${idBase}_pp_2" value="0">
+                        </div>
+                        <span>🎱 Kulečník <span class="max-hint">(max 10)</span></span>
+                        <div>
+                            <input type="number" step="0.5" class="score" data-id="${idBase}_kul_1" value="0"> : 
+                            <input type="number" step="0.5" class="score" data-id="${idBase}_kul_2" value="0">
+                        </div>
+                        <span>⚽ Fotbálek <span class="max-hint">(max 10)</span></span>
+                        <div>
+                            <input type="number" step="1" class="score" data-id="${idBase}_fot_1" value="0"> : 
+                            <input type="number" step="1" class="score" data-id="${idBase}_fot_2" value="0">
+                        </div>
+                        <span>🎯 Šipky <span class="max-hint">(max 10)</span></span>
+                        <div>
+                            <input type="number" step="1" class="score" data-id="${idBase}_sip_1" value="0"> : 
+                            <input type="number" step="1" class="score" data-id="${idBase}_sip_2" value="0">
+                        </div>
+                    </div>
+                </div>`;
+            }
+        }
+        html += "<h3>🍺 Pořadí v pivu (max 40 b.)</h3>";
+        tymy.forEach((t, i) => {
+            html += `<div style="margin-bottom:10px">${t}: <input type="number" class="score" data-id="pivo_${i}" value="0"></div>`;
+        });
+        document.getElementById('matches').innerHTML = html;
+        prepojitejTabulku();
+    }
+
+    function prepojitejTabulku() {
+        let stats = tymy.map(name => ({name, pp:0, kul:0, fot:0, sip:0, pivo:0, celkem:0}));
+        document.querySelectorAll('.score').forEach(input => {
+            let val = parseFloat(input.value) || 0;
+            let id = input.dataset.id;
+            if(!id) return;
+            if(id.includes('pivo')) {
+                stats[id.split('_')[1]].pivo += val;
+            } else {
+                let p = id.split('_');
+                let targetIdx = (p[4] === "1") ? p[1] : p[2];
+                stats[targetIdx][p[3]] += val;
+            }
+        });
+        stats.forEach(s => s.celkem = s.pp + s.kul + s.fot + s.sip + s.pivo);
+        stats.sort((a, b) => b.celkem - a.celkem);
+
+        let bodyHtml = "";
+        stats.forEach((s, i) => {
+            let m = (i===0 && s.celkem>0) ? "🥇 " : (i===1 && s.celkem>0) ? "🥈 " : (i===2 && s.celkem>0) ? "🥉 " : "";
+            bodyHtml += `<tr><td>${i+1}.</td><td style="font-weight:bold">${m}${s.name}</td><td>${s.pp}</td><td>${s.kul}</td><td>${s.fot}</td><td>${s.sip}</td><td>${s.pivo}</td><td style="font-weight:bold; background:#fff3e0">${s.celkem}</td></tr>`;
+        });
+        document.getElementById('resultsBody').innerHTML = bodyHtml;
+    }
+
+    function ulozitData() {
+        prepojitejTabulku();
+        alert("Data přepočítána! Nyní vygeneruj kód pro GitHub.");
+    }
+
+    function generovatKodProGithub() {
+        // Nastavíme hodnoty v atributech value, aby byly v HTML kódu vidět
+        document.querySelectorAll('input').forEach(i => i.setAttribute('value', i.value));
+        const html = "<!DOCTYPE html>\n" + document.documentElement.innerHTML;
+        const area = document.getElementById('outputCode');
+        area.value = html;
+        area.style.display = "block";
+        alert("Kód připraven v textovém poli.");
+    }
+
+    function kopirovatKod() {
+        const area = document.getElementById('outputCode');
+        area.select();
+        document.execCommand('copy');
+        alert("Zkopírováno! Teď to vlož na GitHub.");
+    }
+
+    function resetovatVse() {
+        if(confirm("Smazat vše?")) location.reload();
+    }
+
+    document.addEventListener('input', e => {
+        if (e.target.classList.contains('score')) prepojitejTabulku();
+    });
+</script>
+</body>
+</html>
