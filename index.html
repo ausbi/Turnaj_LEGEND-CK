@@ -45,12 +45,12 @@
 <body>
 
 <div class="container">
-    <h1>🏆 Letní Pětiboj Legend 2026</h1>
+    <h1>🏆 LETNÍ Pětiboj Legend 2026</h1>
     <div class="subtitle">1. 6. – 31. 8. | 🏓 🎱 ⚽ 🎯 🍺</div>
 
     <div class="top-actions">
         <a href="https://tally.so/r/9qRNoE" target="_blank" class="btn-prihlaska">📝 REGISTROVAT TÝM</a>
-        <a href="Propozice.pdf" target="_blank" class="link-propozice">📄 Otevřít kompletní propozice (PDF)</a>
+        <a href="Pětiboj.pdf" target="_blank" class="link-propozice">📄 Otevřít kompletní propozice (PDF)</a>
     </div>
 
     <h3>🏆 AKTUÁLNÍ POŘADÍ</h3>
@@ -81,15 +81,16 @@
         <button class="admin-btn save-btn-local" onclick="ulozitData()">💾 1. ULOŽIT DO TABULKY (PŘEPOČÍTAT)</button>
         
         <div style="background: #eee; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
-            <p style="margin:0 0 10px 0"><strong>Nastavení týmů:</strong></p>
+            <p style="margin:0 0 10px 0"><strong>Nastavení týmů (nyní 6 týmů):</strong></p>
             <div id="setup-inputs">
                 <input type="text" id="t1" value="Tým 1">
                 <input type="text" id="t2" value="Tým 2">
                 <input type="text" id="t3" value="Tým 3">
                 <input type="text" id="t4" value="Tým 4">
                 <input type="text" id="t5" value="Tým 5">
+                <input type="text" id="t6" value="Tým 6">
             </div>
-            <button onclick="generovatNove()" style="padding:10px; background: #e67e22; color:white; border:none; border-radius:8px; cursor:pointer;">Aktualizovat jména týmů</button>
+            <button onclick="generovatNove()" style="padding:10px; background: #e67e22; color:white; border:none; border-radius:8px; cursor:pointer;">Aktualizovat jména týmů a zápasy</button>
         </div>
 
         <div style="border-top: 2px solid #ddd; padding-top: 15px;">
@@ -106,6 +107,8 @@
 </footer>
 
 <script>
+    const POCET_TYMU = 6;
+
     function toggleAdmin() {
         let az = document.getElementById('admin-zone');
         az.style.display = (az.style.display === 'block') ? 'none' : 'block';
@@ -116,7 +119,7 @@
 
     function vykreslitVse() {
         let tymy = [];
-        for(let i=1; i<=5; i++) {
+        for(let i=1; i<=POCET_TYMU; i++) {
             let el = document.getElementById('t'+i);
             let jmeno = el.getAttribute('value') || el.value;
             tymy.push(jmeno);
@@ -156,18 +159,18 @@
     }
 
     function generovatNove() {
-        for(let i=1; i<=5; i++) {
+        for(let i=1; i<=POCET_TYMU; i++) {
             let el = document.getElementById('t'+i);
             el.setAttribute('value', el.value);
         }
         vykreslitVse();
-        alert("Jména týmů aktualizována!");
+        alert("Jména týmů a všech 15 zápasů aktualizováno!");
     }
 
     function prepojitejTabulku(tymySeznam) {
         let tymyLocal = tymySeznam || [];
         if(tymyLocal.length === 0) {
-            for(let i=1; i<=5; i++) tymyLocal.push(document.getElementById('t'+i).value);
+            for(let i=1; i<=POCET_TYMU; i++) tymyLocal.push(document.getElementById('t'+i).value);
         }
         let stats = tymyLocal.map(name => ({name, pp:0, kul:0, fot:0, sip:0, pivo:0, celkem:0}));
         document.querySelectorAll('.score').forEach(input => {
@@ -202,7 +205,7 @@
     }
 
     function generovatKodProGithub() {
-        for(let i=1; i<=5; i++) {
+        for(let i=1; i<=POCET_TYMU; i++) {
             let el = document.getElementById('t'+i);
             el.setAttribute('value', el.value);
         }
@@ -219,7 +222,7 @@
     function kopirovatKod() {
         document.getElementById('outputCode').select();
         document.execCommand('copy');
-        alert("Kód zkopírován! Teď ho vlož na GitHub a ulož soubor index.html.");
+        alert("Kód zkopírován! Teď ho hoď na GitHub.");
     }
 </script>
 </body>
