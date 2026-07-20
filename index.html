@@ -18,6 +18,7 @@
         th { background: var(--dark); color: white; padding: 15px 10px; font-size: 0.85em; text-transform: uppercase; }
         td { padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee; font-weight: 600; }
         .sum-col { background: #fdf2e9; color: var(--primary); font-weight: 800; }
+        .rem-col { background: #f5f5f5; color: #666; font-weight: normal; font-size: 0.9em; }
         tr:first-child td { background-color: #fff4e6 !important; }
         
         .rosters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-bottom: 30px; }
@@ -25,7 +26,6 @@
         .roster-card h4 { margin: 0 0 8px 0; color: var(--dark); border-bottom: 2px solid #eee; padding-bottom: 5px; font-size: 1.05em; }
         .roster-members { font-size: 0.95em; color: #555; font-weight: normal; line-height: 1.4; }
 
-        /* Styly pro poznámkový blok */
         .notes-box { background: #fdfaf2; border: 2px dashed #e6c280; border-radius: 15px; padding: 20px; margin-bottom: 30px; }
         .notes-content { white-space: pre-wrap; font-size: 1em; color: #444; line-height: 1.5; font-weight: 500; }
 
@@ -37,7 +37,6 @@
         input[type="number"] { width: 50px; height: 35px; border: 2px solid #ddd; border-radius: 8px; text-align: center; font-weight: bold; }
         .beer-section { background: #fff9e6; padding: 15px; border-radius: 12px; border: 1px solid #ffeeba; margin-top: 20px; }
         
-        /* ADMIN PANEL */
         #admin-zone { display: none; margin-top: 60px; padding: 30px; background: #f8f9fa; border: 2px dashed #ccc; border-radius: 20px; }
         .admin-zone h3 { margin-top: 0; color: var(--primary); }
         .team-setup-row { display: flex; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
@@ -78,9 +77,70 @@
                     <th>🎯</th>
                     <th>🍺</th>
                     <th style="background: var(--primary)">SUM</th>
+                    <th style="background: #7f8c8d">ZBÝVÁ DISCIPLÍN</th>
                 </tr>
             </thead>
-            <tbody id="resultsBody"><tr><td>1</td><td style="text-align:left">🥇 Pravá a Levá ruka Ďábla</td><td>8.5</td><td>7</td><td>0</td><td>10</td><td>0</td><td class="sum-col">25.5</td></tr><tr><td>2</td><td style="text-align:left">🥈 Harry a Lloyd</td><td>8.5</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="sum-col">8.5</td></tr><tr><td>3</td><td style="text-align:left">🥉 Asterix &amp; Obelix</td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="sum-col">3</td></tr><tr><td>4</td><td style="text-align:left">DUO Jamaha</td><td>0</td><td>3</td><td>0</td><td>0</td><td>0</td><td class="sum-col">3</td></tr><tr><td>5</td><td style="text-align:left">Kluci z plakátu</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="sum-col">0</td></tr><tr><td>6</td><td style="text-align:left">Tým 6</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="sum-col">0</td></tr></tbody>
+            <tbody id="resultsBody"><tr>
+                <td>1</td>
+                <td style="text-align:left">🥇 Pravá a Levá ruka Ďábla</td>
+                <td>8.5</td>
+                <td>7</td>
+                <td>0</td>
+                <td>10</td>
+                <td>0</td>
+                <td class="sum-col">25.5</td>
+                <td class="rem-col">18 / 21</td>
+            </tr><tr>
+                <td>2</td>
+                <td style="text-align:left">🥈 Harry a Lloyd</td>
+                <td>8.5</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="sum-col">8.5</td>
+                <td class="rem-col">19 / 21</td>
+            </tr><tr>
+                <td>3</td>
+                <td style="text-align:left">🥉 Asterix &amp; Obelix</td>
+                <td>3</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="sum-col">3</td>
+                <td class="rem-col">20 / 21</td>
+            </tr><tr>
+                <td>4</td>
+                <td style="text-align:left">DUO Jamaha</td>
+                <td>0</td>
+                <td>3</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="sum-col">3</td>
+                <td class="rem-col">19 / 21</td>
+            </tr><tr>
+                <td>5</td>
+                <td style="text-align:left">Kluci z plakátu</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="sum-col">0</td>
+                <td class="rem-col">21 / 21</td>
+            </tr><tr>
+                <td>6</td>
+                <td style="text-align:left">Tým 6</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="sum-col">0</td>
+                <td class="rem-col">21 / 21</td>
+            </tr></tbody>
         </table>
     </div>
 
@@ -111,7 +171,6 @@
                 <div class="roster-members">Fíla &amp; Šák Pari</div>
             </div></div>
 
-    <!-- Nová sekce pro viditelné poznámky -->
     <h3>📝 POZNÁMKY K TURNAJI</h3>
     <div class="notes-box">
         <div class="notes-content" id="notesBoard">PROPOZICE BYLY AKTUALIZOVÁNY 20.07.2026</div>
@@ -119,209 +178,212 @@
 
     <h3>🏟️ ZÁPISY Z DUELŮ</h3>
     <div id="matches">
+        <!-- Zápasy vygenerované systémem každý s každým -->
         <div class="match-card">
             <div class="match-header"><span>Harry a Lloyd</span> <span style="color:var(--primary)">VS</span> <span>Asterix &amp; Obelix</span></div>
             <div class="match-grid">
                 <div class="discipline"><span>🏓</span> Ping-Pong</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_0_1_pp_1" value="7" wfd-id="id0"> : <input type="number" step="0.5" class="score" data-id="m_0_1_pp_2" value="3" wfd-id="id1"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_0_1_pp_1" value="7"> : <input type="number" step="0.5" class="score" data-id="m_0_1_pp_2" value="3"></div>
                 <div class="discipline"><span>🎱</span> Kulečník</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_0_1_kul_1" value="0" wfd-id="id2"> : <input type="number" step="0.5" class="score" data-id="m_0_1_kul_2" value="0" wfd-id="id3"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_0_1_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_0_1_kul_2" value="0"></div>
                 <div class="discipline"><span>⚽</span> Fotbálek</div>
-                <div><input type="number" step="1" class="score" data-id="m_0_1_fot_1" value="0" wfd-id="id4"> : <input type="number" step="1" class="score" data-id="m_0_1_fot_2" value="0" wfd-id="id5"></div>
+                <div><input type="number" step="1" class="score" data-id="m_0_1_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_0_1_fot_2" value="0"></div>
                 <div class="discipline"><span>🎯</span> Šipky</div>
-                <div><input type="number" step="1" class="score" data-id="m_0_1_sip_1" value="0" wfd-id="id6"> : <input type="number" step="1" class="score" data-id="m_0_1_sip_2" value="0" wfd-id="id7"></div>
+                <div><input type="number" step="1" class="score" data-id="m_0_1_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_0_1_sip_2" value="0"></div>
             </div>
         </div>
         <div class="match-card">
             <div class="match-header"><span>Harry a Lloyd</span> <span style="color:var(--primary)">VS</span> <span>Kluci z plakátu</span></div>
             <div class="match-grid">
                 <div class="discipline"><span>🏓</span> Ping-Pong</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_0_2_pp_1" value="0" wfd-id="id8"> : <input type="number" step="0.5" class="score" data-id="m_0_2_pp_2" value="0" wfd-id="id9"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_0_2_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_0_2_pp_2" value="0"></div>
                 <div class="discipline"><span>🎱</span> Kulečník</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_0_2_kul_1" value="0" wfd-id="id10"> : <input type="number" step="0.5" class="score" data-id="m_0_2_kul_2" value="0" wfd-id="id11"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_0_2_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_0_2_kul_2" value="0"></div>
                 <div class="discipline"><span>⚽</span> Fotbálek</div>
-                <div><input type="number" step="1" class="score" data-id="m_0_2_fot_1" value="0" wfd-id="id12"> : <input type="number" step="1" class="score" data-id="m_0_2_fot_2" value="0" wfd-id="id13"></div>
+                <div><input type="number" step="1" class="score" data-id="m_0_2_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_0_2_fot_2" value="0"></div>
                 <div class="discipline"><span>🎯</span> Šipky</div>
-                <div><input type="number" step="1" class="score" data-id="m_0_2_sip_1" value="0" wfd-id="id14"> : <input type="number" step="1" class="score" data-id="m_0_2_sip_2" value="0" wfd-id="id15"></div>
+                <div><input type="number" step="1" class="score" data-id="m_0_2_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_0_2_sip_2" value="0"></div>
             </div>
         </div>
         <div class="match-card">
             <div class="match-header"><span>Harry a Lloyd</span> <span style="color:var(--primary)">VS</span> <span>Pravá a Levá ruka Ďábla</span></div>
             <div class="match-grid">
                 <div class="discipline"><span>🏓</span> Ping-Pong</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_0_3_pp_1" value="1.5" wfd-id="id16"> : <input type="number" step="0.5" class="score" data-id="m_0_3_pp_2" value="8.5" wfd-id="id17"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_0_3_pp_1" value="1.5"> : <input type="number" step="0.5" class="score" data-id="m_0_3_pp_2" value="8.5"></div>
                 <div class="discipline"><span>🎱</span> Kulečník</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_0_3_kul_1" value="0" wfd-id="id18"> : <input type="number" step="0.5" class="score" data-id="m_0_3_kul_2" value="0" wfd-id="id19"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_0_3_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_0_3_kul_2" value="0"></div>
                 <div class="discipline"><span>⚽</span> Fotbálek</div>
-                <div><input type="number" step="1" class="score" data-id="m_0_3_fot_1" value="0" wfd-id="id20"> : <input type="number" step="1" class="score" data-id="m_0_3_fot_2" value="0" wfd-id="id21"></div>
+                <div><input type="number" step="1" class="score" data-id="m_0_3_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_0_3_fot_2" value="0"></div>
                 <div class="discipline"><span>🎯</span> Šipky</div>
-                <div><input type="number" step="1" class="score" data-id="m_0_3_sip_1" value="0" wfd-id="id22"> : <input type="number" step="1" class="score" data-id="m_0_3_sip_2" value="0" wfd-id="id23"></div>
+                <div><input type="number" step="1" class="score" data-id="m_0_3_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_0_3_sip_2" value="0"></div>
             </div>
         </div>
         <div class="match-card">
             <div class="match-header"><span>Harry a Lloyd</span> <span style="color:var(--primary)">VS</span> <span>DUO Jamaha</span></div>
             <div class="match-grid">
                 <div class="discipline"><span>🏓</span> Ping-Pong</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_0_4_pp_1" value="0" wfd-id="id24"> : <input type="number" step="0.5" class="score" data-id="m_0_4_pp_2" value="0" wfd-id="id25"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_0_4_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_0_4_pp_2" value="0"></div>
                 <div class="discipline"><span>🎱</span> Kulečník</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_0_4_kul_1" value="0" wfd-id="id26"> : <input type="number" step="0.5" class="score" data-id="m_0_4_kul_2" value="0" wfd-id="id27"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_0_4_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_0_4_kul_2" value="0"></div>
                 <div class="discipline"><span>⚽</span> Fotbálek</div>
-                <div><input type="number" step="1" class="score" data-id="m_0_4_fot_1" value="0" wfd-id="id28"> : <input type="number" step="1" class="score" data-id="m_0_4_fot_2" value="0" wfd-id="id29"></div>
+                <div><input type="number" step="1" class="score" data-id="m_0_4_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_0_4_fot_2" value="0"></div>
                 <div class="discipline"><span>🎯</span> Šipky</div>
-                <div><input type="number" step="1" class="score" data-id="m_0_4_sip_1" value="0" wfd-id="id30"> : <input type="number" step="1" class="score" data-id="m_0_4_sip_2" value="0" wfd-id="id31"></div>
+                <div><input type="number" step="1" class="score" data-id="m_0_4_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_0_4_sip_2" value="0"></div>
             </div>
         </div>
         <div class="match-card">
             <div class="match-header"><span>Harry a Lloyd</span> <span style="color:var(--primary)">VS</span> <span>Tým 6</span></div>
             <div class="match-grid">
                 <div class="discipline"><span>🏓</span> Ping-Pong</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_0_5_pp_1" value="0" wfd-id="id32"> : <input type="number" step="0.5" class="score" data-id="m_0_5_pp_2" value="0" wfd-id="id33"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_0_5_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_0_5_pp_2" value="0"></div>
                 <div class="discipline"><span>🎱</span> Kulečník</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_0_5_kul_1" value="0" wfd-id="id34"> : <input type="number" step="0.5" class="score" data-id="m_0_5_kul_2" value="0" wfd-id="id35"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_0_5_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_0_5_kul_2" value="0"></div>
                 <div class="discipline"><span>⚽</span> Fotbálek</div>
-                <div><input type="number" step="1" class="score" data-id="m_0_5_fot_1" value="0" wfd-id="id36"> : <input type="number" step="1" class="score" data-id="m_0_5_fot_2" value="0" wfd-id="id37"></div>
+                <div><input type="number" step="1" class="score" data-id="m_0_5_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_0_5_fot_2" value="0"></div>
                 <div class="discipline"><span>🎯</span> Šipky</div>
-                <div><input type="number" step="1" class="score" data-id="m_0_5_sip_1" value="0" wfd-id="id38"> : <input type="number" step="1" class="score" data-id="m_0_5_sip_2" value="0" wfd-id="id39"></div>
+                <div><input type="number" step="1" class="score" data-id="m_0_5_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_0_5_sip_2" value="0"></div>
             </div>
         </div>
         <div class="match-card">
             <div class="match-header"><span>Asterix &amp; Obelix</span> <span style="color:var(--primary)">VS</span> <span>Kluci z plakátu</span></div>
             <div class="match-grid">
                 <div class="discipline"><span>🏓</span> Ping-Pong</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_1_2_pp_1" value="0" wfd-id="id40"> : <input type="number" step="0.5" class="score" data-id="m_1_2_pp_2" value="0" wfd-id="id41"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_1_2_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_1_2_pp_2" value="0"></div>
                 <div class="discipline"><span>🎱</span> Kulečník</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_1_2_kul_1" value="0" wfd-id="id42"> : <input type="number" step="0.5" class="score" data-id="m_1_2_kul_2" value="0" wfd-id="id43"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_1_2_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_1_2_kul_2" value="0"></div>
                 <div class="discipline"><span>⚽</span> Fotbálek</div>
-                <div><input type="number" step="1" class="score" data-id="m_1_2_fot_1" value="0" wfd-id="id44"> : <input type="number" step="1" class="score" data-id="m_1_2_fot_2" value="0" wfd-id="id45"></div>
+                <div><input type="number" step="1" class="score" data-id="m_1_2_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_1_2_fot_2" value="0"></div>
                 <div class="discipline"><span>🎯</span> Šipky</div>
-                <div><input type="number" step="1" class="score" data-id="m_1_2_sip_1" value="0" wfd-id="id46"> : <input type="number" step="1" class="score" data-id="m_1_2_sip_2" value="0" wfd-id="id47"></div>
+                <div><input type="number" step="1" class="score" data-id="m_1_2_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_1_2_sip_2" value="0"></div>
             </div>
         </div>
         <div class="match-card">
             <div class="match-header"><span>Asterix &amp; Obelix</span> <span style="color:var(--primary)">VS</span> <span>Pravá a Levá ruka Ďábla</span></div>
             <div class="match-grid">
                 <div class="discipline"><span>🏓</span> Ping-Pong</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_1_3_pp_1" value="0" wfd-id="id48"> : <input type="number" step="0.5" class="score" data-id="m_1_3_pp_2" value="0" wfd-id="id49"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_1_3_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_1_3_pp_2" value="0"></div>
                 <div class="discipline"><span>🎱</span> Kulečník</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_1_3_kul_1" value="0" wfd-id="id50"> : <input type="number" step="0.5" class="score" data-id="m_1_3_kul_2" value="0" wfd-id="id51"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_1_3_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_1_3_kul_2" value="0"></div>
                 <div class="discipline"><span>⚽</span> Fotbálek</div>
-                <div><input type="number" step="1" class="score" data-id="m_1_3_fot_1" value="0" wfd-id="id52"> : <input type="number" step="1" class="score" data-id="m_1_3_fot_2" value="0" wfd-id="id53"></div>
+                <div><input type="number" step="1" class="score" data-id="m_1_3_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_1_3_fot_2" value="0"></div>
                 <div class="discipline"><span>🎯</span> Šipky</div>
-                <div><input type="number" step="1" class="score" data-id="m_1_3_sip_1" value="0" wfd-id="id54"> : <input type="number" step="1" class="score" data-id="m_1_3_sip_2" value="0" wfd-id="id55"></div>
+                <div><input type="number" step="1" class="score" data-id="m_1_3_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_1_3_sip_2" value="0"></div>
             </div>
         </div>
         <div class="match-card">
             <div class="match-header"><span>Asterix &amp; Obelix</span> <span style="color:var(--primary)">VS</span> <span>DUO Jamaha</span></div>
             <div class="match-grid">
                 <div class="discipline"><span>🏓</span> Ping-Pong</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_1_4_pp_1" value="0" wfd-id="id56"> : <input type="number" step="0.5" class="score" data-id="m_1_4_pp_2" value="0" wfd-id="id57"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_1_4_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_1_4_pp_2" value="0"></div>
                 <div class="discipline"><span>🎱</span> Kulečník</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_1_4_kul_1" value="0" wfd-id="id58"> : <input type="number" step="0.5" class="score" data-id="m_1_4_kul_2" value="0" wfd-id="id59"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_1_4_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_1_4_kul_2" value="0"></div>
                 <div class="discipline"><span>⚽</span> Fotbálek</div>
-                <div><input type="number" step="1" class="score" data-id="m_1_4_fot_1" value="0" wfd-id="id60"> : <input type="number" step="1" class="score" data-id="m_1_4_fot_2" value="0" wfd-id="id61"></div>
+                <div><input type="number" step="1" class="score" data-id="m_1_4_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_1_4_fot_2" value="0"></div>
                 <div class="discipline"><span>🎯</span> Šipky</div>
-                <div><input type="number" step="1" class="score" data-id="m_1_4_sip_1" value="0" wfd-id="id62"> : <input type="number" step="1" class="score" data-id="m_1_4_sip_2" value="0" wfd-id="id63"></div>
+                <div><input type="number" step="1" class="score" data-id="m_1_4_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_1_4_sip_2" value="0"></div>
             </div>
         </div>
         <div class="match-card">
             <div class="match-header"><span>Asterix &amp; Obelix</span> <span style="color:var(--primary)">VS</span> <span>Tým 6</span></div>
             <div class="match-grid">
                 <div class="discipline"><span>🏓</span> Ping-Pong</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_1_5_pp_1" value="0" wfd-id="id64"> : <input type="number" step="0.5" class="score" data-id="m_1_5_pp_2" value="0" wfd-id="id65"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_1_5_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_1_5_pp_2" value="0"></div>
                 <div class="discipline"><span>🎱</span> Kulečník</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_1_5_kul_1" value="0" wfd-id="id66"> : <input type="number" step="0.5" class="score" data-id="m_1_5_kul_2" value="0" wfd-id="id67"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_1_5_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_1_5_kul_2" value="0"></div>
                 <div class="discipline"><span>⚽</span> Fotbálek</div>
-                <div><input type="number" step="1" class="score" data-id="m_1_5_fot_1" value="0" wfd-id="id68"> : <input type="number" step="1" class="score" data-id="m_1_5_fot_2" value="0" wfd-id="id69"></div>
+                <div><input type="number" step="1" class="score" data-id="m_1_5_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_1_5_fot_2" value="0"></div>
                 <div class="discipline"><span>🎯</span> Šipky</div>
-                <div><input type="number" step="1" class="score" data-id="m_1_5_sip_1" value="0" wfd-id="id70"> : <input type="number" step="1" class="score" data-id="m_1_5_sip_2" value="0" wfd-id="id71"></div>
+                <div><input type="number" step="1" class="score" data-id="m_1_5_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_1_5_sip_2" value="0"></div>
             </div>
         </div>
         <div class="match-card">
             <div class="match-header"><span>Kluci z plakátu</span> <span style="color:var(--primary)">VS</span> <span>Pravá a Levá ruka Ďábla</span></div>
             <div class="match-grid">
                 <div class="discipline"><span>🏓</span> Ping-Pong</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_2_3_pp_1" value="0" wfd-id="id72"> : <input type="number" step="0.5" class="score" data-id="m_2_3_pp_2" value="0" wfd-id="id73"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_2_3_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_2_3_pp_2" value="0"></div>
                 <div class="discipline"><span>🎱</span> Kulečník</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_2_3_kul_1" value="0" wfd-id="id74"> : <input type="number" step="0.5" class="score" data-id="m_2_3_kul_2" value="0" wfd-id="id75"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_2_3_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_2_3_kul_2" value="0"></div>
                 <div class="discipline"><span>⚽</span> Fotbálek</div>
-                <div><input type="number" step="1" class="score" data-id="m_2_3_fot_1" value="0" wfd-id="id76"> : <input type="number" step="1" class="score" data-id="m_2_3_fot_2" value="0" wfd-id="id77"></div>
+                <div><input type="number" step="1" class="score" data-id="m_2_3_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_2_3_fot_2" value="0"></div>
                 <div class="discipline"><span>🎯</span> Šipky</div>
-                <div><input type="number" step="1" class="score" data-id="m_2_3_sip_1" value="0" wfd-id="id78"> : <input type="number" step="1" class="score" data-id="m_2_3_sip_2" value="0" wfd-id="id79"></div>
+                <div><input type="number" step="1" class="score" data-id="m_2_3_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_2_3_sip_2" value="0"></div>
             </div>
         </div>
         <div class="match-card">
             <div class="match-header"><span>Kluci z plakátu</span> <span style="color:var(--primary)">VS</span> <span>DUO Jamaha</span></div>
             <div class="match-grid">
                 <div class="discipline"><span>🏓</span> Ping-Pong</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_2_4_pp_1" value="0" wfd-id="id80"> : <input type="number" step="0.5" class="score" data-id="m_2_4_pp_2" value="0" wfd-id="id81"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_2_4_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_2_4_pp_2" value="0"></div>
                 <div class="discipline"><span>🎱</span> Kulečník</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_2_4_kul_1" value="0" wfd-id="id82"> : <input type="number" step="0.5" class="score" data-id="m_2_4_kul_2" value="0" wfd-id="id83"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_2_4_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_2_4_kul_2" value="0"></div>
                 <div class="discipline"><span>⚽</span> Fotbálek</div>
-                <div><input type="number" step="1" class="score" data-id="m_2_4_fot_1" value="0" wfd-id="id84"> : <input type="number" step="1" class="score" data-id="m_2_4_fot_2" value="0" wfd-id="id85"></div>
+                <div><input type="number" step="1" class="score" data-id="m_2_4_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_2_4_fot_2" value="0"></div>
                 <div class="discipline"><span>🎯</span> Šipky</div>
-                <div><input type="number" step="1" class="score" data-id="m_2_4_sip_1" value="0" wfd-id="id86"> : <input type="number" step="1" class="score" data-id="m_2_4_sip_2" value="0" wfd-id="id87"></div>
+                <div><input type="number" step="1" class="score" data-id="m_2_4_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_2_4_sip_2" value="0"></div>
             </div>
         </div>
         <div class="match-card">
             <div class="match-header"><span>Kluci z plakátu</span> <span style="color:var(--primary)">VS</span> <span>Tým 6</span></div>
             <div class="match-grid">
                 <div class="discipline"><span>🏓</span> Ping-Pong</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_2_5_pp_1" value="0" wfd-id="id88"> : <input type="number" step="0.5" class="score" data-id="m_2_5_pp_2" value="0" wfd-id="id89"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_2_5_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_2_5_pp_2" value="0"></div>
                 <div class="discipline"><span>🎱</span> Kulečník</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_2_5_kul_1" value="0" wfd-id="id90"> : <input type="number" step="0.5" class="score" data-id="m_2_5_kul_2" value="0" wfd-id="id91"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_2_5_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_2_5_kul_2" value="0"></div>
                 <div class="discipline"><span>⚽</span> Fotbálek</div>
-                <div><input type="number" step="1" class="score" data-id="m_2_5_fot_1" value="0" wfd-id="id92"> : <input type="number" step="1" class="score" data-id="m_2_5_fot_2" value="0" wfd-id="id93"></div>
+                <div><input type="number" step="1" class="score" data-id="m_2_5_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_2_5_fot_2" value="0"></div>
                 <div class="discipline"><span>🎯</span> Šipky</div>
-                <div><input type="number" step="1" class="score" data-id="m_2_5_sip_1" value="0" wfd-id="id94"> : <input type="number" step="1" class="score" data-id="m_2_5_sip_2" value="0" wfd-id="id95"></div>
+                <div><input type="number" step="1" class="score" data-id="m_2_5_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_2_5_sip_2" value="0"></div>
             </div>
         </div>
         <div class="match-card">
             <div class="match-header"><span>Pravá a Levá ruka Ďábla</span> <span style="color:var(--primary)">VS</span> <span>DUO Jamaha</span></div>
             <div class="match-grid">
                 <div class="discipline"><span>🏓</span> Ping-Pong</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_3_4_pp_1" value="0" wfd-id="id96"> : <input type="number" step="0.5" class="score" data-id="m_3_4_pp_2" value="0" wfd-id="id97"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_3_4_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_3_4_pp_2" value="0"></div>
                 <div class="discipline"><span>🎱</span> Kulečník</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_3_4_kul_1" value="7" wfd-id="id98"> : <input type="number" step="0.5" class="score" data-id="m_3_4_kul_2" value="3" wfd-id="id99"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_3_4_kul_1" value="7"> : <input type="number" step="0.5" class="score" data-id="m_3_4_kul_2" value="3"></div>
                 <div class="discipline"><span>⚽</span> Fotbálek</div>
-                <div><input type="number" step="1" class="score" data-id="m_3_4_fot_1" value="0" wfd-id="id100"> : <input type="number" step="1" class="score" data-id="m_3_4_fot_2" value="0" wfd-id="id101"></div>
+                <div><input type="number" step="1" class="score" data-id="m_3_4_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_3_4_fot_2" value="0"></div>
                 <div class="discipline"><span>🎯</span> Šipky</div>
-                <div><input type="number" step="1" class="score" data-id="m_3_4_sip_1" value="10" wfd-id="id102"> : <input type="number" step="1" class="score" data-id="m_3_4_sip_2" value="0" wfd-id="id103"></div>
+                <div><input type="number" step="1" class="score" data-id="m_3_4_sip_1" value="10"> : <input type="number" step="1" class="score" data-id="m_3_4_sip_2" value="0"></div>
             </div>
         </div>
         <div class="match-card">
             <div class="match-header"><span>Pravá a Levá ruka Ďábla</span> <span style="color:var(--primary)">VS</span> <span>Tým 6</span></div>
             <div class="match-grid">
                 <div class="discipline"><span>🏓</span> Ping-Pong</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_3_5_pp_1" value="0" wfd-id="id104"> : <input type="number" step="0.5" class="score" data-id="m_3_5_pp_2" value="0" wfd-id="id105"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_3_5_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_3_5_pp_2" value="0"></div>
                 <div class="discipline"><span>🎱</span> Kulečník</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_3_5_kul_1" value="0" wfd-id="id106"> : <input type="number" step="0.5" class="score" data-id="m_3_5_kul_2" value="0" wfd-id="id107"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_3_5_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_3_5_kul_2" value="0"></div>
                 <div class="discipline"><span>⚽</span> Fotbálek</div>
-                <div><input type="number" step="1" class="score" data-id="m_3_5_fot_1" value="0" wfd-id="id108"> : <input type="number" step="1" class="score" data-id="m_3_5_fot_2" value="0" wfd-id="id109"></div>
+                <div><input type="number" step="1" class="score" data-id="m_3_5_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_3_5_fot_2" value="0"></div>
                 <div class="discipline"><span>🎯</span> Šipky</div>
-                <div><input type="number" step="1" class="score" data-id="m_3_5_sip_1" value="0" wfd-id="id110"> : <input type="number" step="1" class="score" data-id="m_3_5_sip_2" value="0" wfd-id="id111"></div>
+                <div><input type="number" step="1" class="score" data-id="m_3_5_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_3_5_sip_2" value="0"></div>
             </div>
         </div>
         <div class="match-card">
             <div class="match-header"><span>DUO Jamaha</span> <span style="color:var(--primary)">VS</span> <span>Tým 6</span></div>
             <div class="match-grid">
                 <div class="discipline"><span>🏓</span> Ping-Pong</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_4_5_pp_1" value="0" wfd-id="id112"> : <input type="number" step="0.5" class="score" data-id="m_4_5_pp_2" value="0" wfd-id="id113"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_4_5_pp_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_4_5_pp_2" value="0"></div>
                 <div class="discipline"><span>🎱</span> Kulečník</div>
-                <div><input type="number" step="0.5" class="score" data-id="m_4_5_kul_1" value="0" wfd-id="id114"> : <input type="number" step="0.5" class="score" data-id="m_4_5_kul_2" value="0" wfd-id="id115"></div>
+                <div><input type="number" step="0.5" class="score" data-id="m_4_5_kul_1" value="0"> : <input type="number" step="0.5" class="score" data-id="m_4_5_kul_2" value="0"></div>
                 <div class="discipline"><span>⚽</span> Fotbálek</div>
-                <div><input type="number" step="1" class="score" data-id="m_4_5_fot_1" value="0" wfd-id="id116"> : <input type="number" step="1" class="score" data-id="m_4_5_fot_2" value="0" wfd-id="id117"></div>
+                <div><input type="number" step="1" class="score" data-id="m_4_5_fot_1" value="0"> : <input type="number" step="1" class="score" data-id="m_4_5_fot_2" value="0"></div>
                 <div class="discipline"><span>🎯</span> Šipky</div>
-                <div><input type="number" step="1" class="score" data-id="m_4_5_sip_1" value="0" wfd-id="id118"> : <input type="number" step="1" class="score" data-id="m_4_5_sip_2" value="0" wfd-id="id119"></div>
+                <div><input type="number" step="1" class="score" data-id="m_4_5_sip_1" value="0"> : <input type="number" step="1" class="score" data-id="m_4_5_sip_2" value="0"></div>
             </div>
         </div>
+        
+        <!-- PIVA -->
         <div class="beer-section">
             <h3>🍺 Tuplák piva (U Marie)</h3>
-            <div style="display:flex; justify-content:space-between; margin-bottom:8px; align-items:center;"><strong>Harry a Lloyd</strong> <input type="number" class="score" data-id="pivo_0" value="0" wfd-id="id120"></div>
-            <div style="display:flex; justify-content:space-between; margin-bottom:8px; align-items:center;"><strong>Asterix &amp; Obelix</strong> <input type="number" class="score" data-id="pivo_1" value="0" wfd-id="id121"></div>
-            <div style="display:flex; justify-content:space-between; margin-bottom:8px; align-items:center;"><strong>Kluci z plakátu</strong> <input type="number" class="score" data-id="pivo_2" value="0" wfd-id="id122"></div>
-            <div style="display:flex; justify-content:space-between; margin-bottom:8px; align-items:center;"><strong>Pravá a Levá ruka Ďábla</strong> <input type="number" class="score" data-id="pivo_3" value="0" wfd-id="id123"></div>
-            <div style="display:flex; justify-content:space-between; margin-bottom:8px; align-items:center;"><strong>DUO Jamaha</strong> <input type="number" class="score" data-id="pivo_4" value="0" wfd-id="id124"></div>
-            <div style="display:flex; justify-content:space-between; margin-bottom:8px; align-items:center;"><strong>Tým 6</strong> <input type="number" class="score" data-id="pivo_5" value="0" wfd-id="id125"></div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:8px; align-items:center;"><strong>Harry a Lloyd</strong> <input type="number" class="score" data-id="pivo_0" value="0"></div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:8px; align-items:center;"><strong>Asterix &amp; Obelix</strong> <input type="number" class="score" data-id="pivo_1" value="0"></div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:8px; align-items:center;"><strong>Kluci z plakátu</strong> <input type="number" class="score" data-id="pivo_2" value="0"></div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:8px; align-items:center;"><strong>Pravá a Levá ruka Ďábla</strong> <input type="number" class="score" data-id="pivo_3" value="0"></div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:8px; align-items:center;"><strong>DUO Jamaha</strong> <input type="number" class="score" data-id="pivo_4" value="0"></div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:8px; align-items:center;"><strong>Tým 6</strong> <input type="number" class="score" data-id="pivo_5" value="0"></div>
         </div>
     </div>
 
@@ -335,33 +397,33 @@
             <p style="margin:0 0 10px 0"><strong>Nastavení týmů a účastníků:</strong></p>
             <div id="setup-inputs">
                 <div class="team-setup-row">
-                    <input type="text" id="t1" value="Harry a Lloyd" wfd-id="id126">
-                    <input type="text" id="m1" class="members-input" placeholder="Jména účastníků" value="Jeňa &amp; Adámek" wfd-id="id127">
+                    <input type="text" id="t1" value="Harry a Lloyd">
+                    <input type="text" id="m1" class="members-input" placeholder="Jména účastníků" value="Jeňa &amp; Adámek">
                 </div>
                 <div class="team-setup-row">
-                    <input type="text" id="t2" value="Asterix &amp; Obelix" wfd-id="id128">
-                    <input type="text" id="m2" class="members-input" placeholder="Jména účastníků" value="Míša &amp; Ausbi" wfd-id="id129">
+                    <input type="text" id="t2" value="Asterix &amp; Obelix">
+                    <input type="text" id="m2" class="members-input" placeholder="Jména účastníků" value="Míša &amp; Ausbi">
                 </div>
                 <div class="team-setup-row">
-                    <input type="text" id="t3" value="Kluci z plakátu" wfd-id="id130">
-                    <input type="text" id="m3" class="members-input" placeholder="Jména účastníků" value="Venca &amp; Kluk z plakátu" wfd-id="id131">
+                    <input type="text" id="t3" value="Kluci z plakátu">
+                    <input type="text" id="m3" class="members-input" placeholder="Jména účastníků" value="Venca &amp; Kluk z plakátu">
                 </div>
                 <div class="team-setup-row">
-                    <input type="text" id="t4" value="Pravá a Levá ruka Ďábla" wfd-id="id132">
-                    <input type="text" id="m4" class="members-input" placeholder="Jména účastníků" value="Zdenda &amp; Sláva" wfd-id="id133">
+                    <input type="text" id="t4" value="Pravá a Levá ruka Ďábla">
+                    <input type="text" id="m4" class="members-input" placeholder="Jména účastníků" value="Zdenda &amp; Sláva">
                 </div>
                 <div class="team-setup-row">
-                    <input type="text" id="t5" value="DUO Jamaha" wfd-id="id134">
-                    <input type="text" id="m5" class="members-input" placeholder="Jména účastníků" value="Loupák &amp; Svěchy" wfd-id="id135">
+                    <input type="text" id="t5" value="DUO Jamaha">
+                    <input type="text" id="m5" class="members-input" placeholder="Jména účastníků" value="Loupák &amp; Svěchy">
                 </div>
                 <div class="team-setup-row">
-                    <input type="text" id="t6" value="Tým 6" wfd-id="id136">
-                    <input type="text" id="m6" class="members-input" placeholder="Jména účastníků" value="Fíla &amp; Šák Pari" wfd-id="id137">
+                    <input type="text" id="t6" value="Tým 6">
+                    <input type="text" id="m6" class="members-input" placeholder="Jména účastníků" value="Fíla &amp; Šák Pari">
                 </div>
             </div>
             
             <p style="margin:15px 0 5px 0"><strong>Poznámkový blok (zobrazí se na webu):</strong></p>
-            <textarea id="notes-input-box" class="notes-input" placeholder="Sem napiš pravidla, vzkazy, termíny zápasů..." value="PROPOZICE BYLY AKTUALIZOVÁNY 20.07.2026" style="width: 632px; height: 62px;"></textarea>
+            <textarea id="notes-input-box" class="notes-input" placeholder="Sem napiš pravidla, vzkazy, termíny zápasů..." value="PROPOZICE BYLY AKTUALIZOVÁNY 20.07.2026"></textarea>
 
             <button onclick="generovatNove()" style="padding:10px; background: #e67e22; color:white; border:none; border-radius:8px; cursor:pointer; width:100%; margin-top:15px; font-weight:bold;">Aktualizovat jména, soupisky a poznámky</button>
         </div>
@@ -408,7 +470,6 @@
             elMem.value = lide;
         }
 
-        // Vykreslení soupisek
         let rostersHtml = "";
         tymy.forEach((t, i) => {
             let zobrazeniLide = soupisky[i].trim() ? soupisky[i] : "<em>Zatím nenahlášeni</em>";
@@ -420,13 +481,11 @@
         });
         document.getElementById('rostersBoard').innerHTML = rostersHtml;
 
-        // Načtení a vykreslení poznámek
         let notesBox = document.getElementById('notes-input-box');
         let textPoznamek = notesBox.getAttribute('value') || notesBox.value || "Zde se zobrazí důležité poznámky, termíny zápasů nebo vzkazy od organizátora.";
         notesBox.value = textPoznamek === "Zde se zobrazí důležité poznámky, termíny zápasů nebo vzkazy od organizátora." ? "" : textPoznamek;
         document.getElementById('notesBoard').innerText = textPoznamek;
 
-        // Přepočet tabulky
         prepojitejTabulku(tymy);
     }
 
@@ -442,7 +501,6 @@
         let text = notesBox.value.trim() ? notesBox.value : "Zde se zobrazí důležité poznámky, termíny zápasů nebo vzkazy od organizátora.";
         notesBox.setAttribute('value', text);
         
-        // Aktualizace záhlaví zápasů
         let tymy = [];
         for(let i=1; i<=POCET_TYMU; i++) tymy.push(document.getElementById('t'+i).value);
         
@@ -457,7 +515,6 @@
             }
         }
         
-        // Aktualizace pivní sekce
         let beerDivs = document.querySelectorAll('.beer-section div');
         tymy.forEach((t, i) => {
             if(beerDivs[i]) {
@@ -474,29 +531,89 @@
         if(tymyLocal.length === 0) {
             for(let i=1; i<=POCET_TYMU; i++) tymyLocal.push(document.getElementById('t'+i).value);
         }
-        let stats = tymyLocal.map(name => ({name, pp:0, kul:0, fot:0, sip:0, pivo:0, celkem:0}));
         
+        // Inicializace statistik pro každý tým
+        let stats = tymyLocal.map((name, index) => ({
+            idOriginal: index, 
+            name, 
+            pp: 0, 
+            kul: 0, 
+            fot: 0, 
+            sip: 0, 
+            pivo: 0, 
+            celkem: 0,
+            odehraneDiscipliny: 0 // Počítadlo konkrétních odehraných bodovaných disciplín (max 21)
+        }));
+
+        // Projdeme všechny vstupy skóre
         document.querySelectorAll('.score').forEach(input => {
             let val = parseFloat(input.value) || 0;
             let id = input.dataset.id;
             if(!id) return;
+            
             if(id.includes('pivo')) {
                 let idx = id.split('_')[1];
-                if(stats[idx]) stats[idx].pivo += val;
+                if(stats[idx]) {
+                    stats[idx].pivo += val;
+                    // Pokud je u piva zadána jakákoliv hodnota větší než 0, bere se jako odehraná disciplína
+                    if(val > 0) {
+                        stats[idx].odehraneDiscipliny++;
+                    }
+                }
             } else {
                 let p = id.split('_');
-                let targetIdx = (p[4] === "1") ? p[1] : p[2];
-                if(stats[targetIdx]) stats[targetIdx][p[3]] += val;
+                let t1 = parseInt(p[1]);
+                let t2 = parseInt(p[2]);
+                let disc = p[3];
+                let strana = p[4];
+                
+                let targetIdx = (strana === "1") ? t1 : t2;
+                if(stats[targetIdx]) {
+                    stats[targetIdx][disc] += val;
+                }
+
+                // Logika pro odpočet zbývajících disciplín:
+                // Zápas (kombinace obou buněk) se považuje za odehraný, pokud alespoň jeden z týmů má zapsané body (> 0)
+                // Najdeme druhé související políčko (protihráče)
+                let druhaStrana = (strana === "1") ? "2" : "1";
+                let druheId = `m_${t1}_${t2}_${disc}_${druhaStrana}`;
+                let druhyInput = document.querySelector(`[data-id="${druheId}"]`);
+                let druhaVal = druhyInput ? (parseFloat(druhyInput.value) || 0) : 0;
+
+                // Pokud je v této disciplíně u tohoto zápasu zadán výsledek (buď u mě nebo u soupeře),
+                // započítáme to tomuto týmu jako odehranou disciplínu.
+                // Podmínka 'strana === "1"' slouží pouze k tomu, abychom to pro daný zápas vyhodnotili právě jednou pro každý tým.
+                if(strana === "1" && (val > 0 || druhaVal > 0)) {
+                    if(stats[t1]) stats[t1].odehraneDiscipliny++;
+                    if(stats[t2]) stats[t2].odehraneDiscipliny++;
+                }
             }
         });
+
+        // Dopočítání celkových sum a zbývajících disciplín z 21
+        stats.forEach(s => {
+            s.celkem = s.pp + s.kul + s.fot + s.sip + s.pivo;
+            s.zbyvaDisciplin = 21 - s.odehraneDiscipliny;
+            if(s.zbyvaDisciplin < 0) s.zbyvaDisciplin = 0; // Pojistka proti záporným hodnotám
+        });
         
-        stats.forEach(s => s.celkem = s.pp + s.kul + s.fot + s.sip + s.pivo);
+        // Seřazení tabulky podle celkového počtu bodů (SUM)
         stats.sort((a, b) => b.celkem - a.celkem);
         
         let bodyHtml = "";
         stats.forEach((s, i) => {
             let m = (i===0 && s.celkem > 0) ? "🥇 " : (i===1 && s.celkem > 0) ? "🥈 " : (i===2 && s.celkem > 0) ? "🥉 " : "";
-            bodyHtml += `<tr><td>${i+1}</td><td style="text-align:left">${m}${s.name}</td><td>${s.pp}</td><td>${s.kul}</td><td>${s.fot}</td><td>${s.sip}</td><td>${s.pivo}</td><td class="sum-col">${s.celkem}</td></tr>`;
+            bodyHtml += `<tr>
+                <td>${i+1}</td>
+                <td style="text-align:left">${m}${s.name}</td>
+                <td>${s.pp}</td>
+                <td>${s.kul}</td>
+                <td>${s.fot}</td>
+                <td>${s.sip}</td>
+                <td>${s.pivo}</td>
+                <td class="sum-col">${s.celkem}</td>
+                <td class="rem-col">${s.zbyvaDisciplin} / 21</td>
+            </tr>`;
         });
         document.getElementById('resultsBody').innerHTML = bodyHtml;
     }
@@ -538,6 +655,5 @@
         alert("Kód zkopírován! Teď ho vlož na GitHub.");
     }
 </script>
-
 
 </body>
